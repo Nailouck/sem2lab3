@@ -5,7 +5,7 @@
 
 template <class T>
 class DynamicArray {
-private:
+protected:
     T* data;
     int size;
 
@@ -87,6 +87,11 @@ void DynamicArray<T>::Remove(int index) {
     if (size == 0) return;
 
     if (index < 0 || index >= size) throw Errors::IndexOutOfRange();
+
+    if (index == size - 1) {
+        size--;
+        return;
+    }
 
     T* newData = new T[size - 1];
 

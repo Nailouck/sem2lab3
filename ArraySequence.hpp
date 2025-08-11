@@ -7,10 +7,8 @@
 
 template <typename T>
 class MutableArraySequence : public Sequence<T> {
-private:
-    int size;
-
 protected:
+    int size;
     DynamicArray<T>* items;
 
     Sequence<T>* CreateFromArray(DynamicArray<T>* array) const;
@@ -169,7 +167,6 @@ Sequence<T>* MutableArraySequence<T>::InsertAt(T item, int index) {
 template <typename T>
 Sequence<T>* MutableArraySequence<T>::Remove(int index) {
     if (items->GetSize() == 0) throw Errors::EmptyArray();
-    items->Remove(index);
     size--;
     return this;
 }

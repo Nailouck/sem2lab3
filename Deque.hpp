@@ -78,7 +78,7 @@ template <typename T>
 T ArrayDeque<T>::PopBack() {
     if (this->IsEmpty()) throw Errors::EmptyArray();
     T val = this->GetLast();
-    this->Remove(this->GetLength() - 1);
+    this->size--;
     return val;
 }
 
@@ -165,7 +165,7 @@ template <typename T>
 T ListDeque<T>::PopBack() {
     if (this->IsEmpty()) throw Errors::EmptyList();
     T val = this->GetLast();
-    this->Remove(this->GetLength() - 1);
+    this->size--;
     return val;
 }
 

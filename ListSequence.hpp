@@ -7,9 +7,9 @@
 
 template <typename T>
 class MutableListSequence : public Sequence<T> {
-private:
-    int size;
 protected:
+    int size;
+
     LinkedList<T>* list;
 
     Sequence<T>* CreateFromList(LinkedList<T>* list) const;

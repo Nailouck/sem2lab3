@@ -5,7 +5,7 @@
 //#define LL_TEST
 //#define AS_TEST
 //#define LS_TEST
-#define ALL_TEST
+//#define ALL_TEST
 
 int main() {
 
@@ -28,6 +28,6 @@ int main() {
 #ifdef ALL_TEST
     AllTests();
 #endif
-
-    Run();
+    TimeTest();
+    //Run();
 }

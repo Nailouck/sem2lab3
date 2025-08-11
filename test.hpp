@@ -2,6 +2,7 @@
 
 #include <assert.h>
 #include <iostream>
+#include <chrono>
 
 #include "DynamicArray.hpp"
 #include "LinkedList.hpp"
@@ -259,6 +260,185 @@ void StudentTest() {
 
 
     std::cout << "all tests were completed successfully.\n";
+}
+
+void TimeTest() {
+    ArrayStack<int> as;
+
+    auto t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        as.Push(i);
+    }
+    auto t2 = std::chrono::high_resolution_clock::now();
+
+    double time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ArrayStack Push time: " << time_range << std::endl;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        as.Pop();
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ArrayStack Pop time: " << time_range << std::endl << std::endl;
+
+
+    ListStack<int> ls;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        ls.Push(i);
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ListStack Push time: " << time_range << std::endl;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        ls.Pop();
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ListStack Pop time: " << time_range << std::endl << std::endl;
+
+
+    ArrayQueue<int> aq;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        aq.Enqueue(i);
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ArrayQueue Enqueue time: " << time_range << std::endl;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        aq.Dequeue();
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ArrayQueue Dequeue time: " << time_range << std::endl << std::endl;
+
+
+    ListQueue<int> lq;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        lq.Enqueue(i);
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ListQueue Enqueue time: " << time_range << std::endl;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        lq.Dequeue();
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ListQueue Dequeue time: " << time_range << std::endl << std::endl;
+
+
+    ArrayDeque<int> ad;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        ad.PushFront(i);
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ArrayDeque PushFront time : " << time_range << std::endl;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        ad.PopFront();
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ArrayDeque PopFront time : " << time_range << std::endl << std::endl;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        ad.PushBack(i);
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ArrayDeque PushBack time : " << time_range << std::endl;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        ad.PopBack();
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ArrayDeque PopBack time : " << time_range << std::endl << std::endl;
+
+
+    ListDeque<int> ld;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        ld.PushFront(i);
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ListDeque PushFront time : " << time_range << std::endl;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        ld.PopFront();
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ListDeque PopFront time : " << time_range << std::endl << std::endl;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        ld.PushBack(i);
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ListDeque PushBack time : " << time_range << std::endl;
+
+    t1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < 1000; i++) {
+        ld.PopBack();
+    }
+    t2 = std::chrono::high_resolution_clock::now();
+
+    time_range = std::chrono::duration<double, std::milli>(t2 - t1).count();
+
+    std::cout << "ListDeque PopBack time : " << time_range << std::endl << std::endl;
 }
 
 void AllTests() {
